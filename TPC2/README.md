@@ -64,3 +64,7 @@ A substituição de espaços numa _string_ por um _underscore_ é facilmente efe
 
 #### 10. Define a função codigos_postais que recebe uma lista de códigos postais válidos e divide-os com base no hífen. A função deve devolver uma lista de pares.
 Considerando que o objetivo deste enunciado era obter uma lista de pares correspondentes às duas partes de cada código postal, foi necessário percorrer a lista inicial de códigos postais no formato normal e aplicar o método _split()_ pelo caracter "**-**". Aquando desta separação, cada parte de cada código postal foi inserida num tuplo (escolha pessoal para armazenar a informação), que por sua vez era inserido na lista final.
+
+### Desafios
+- Conseguir obter somente os números inteiros, sem retirar somente a vírgula
+- Garantir todas as condições de verificação de escrita
