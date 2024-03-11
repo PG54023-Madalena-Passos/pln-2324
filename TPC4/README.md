@@ -47,6 +47,13 @@ A parte _html_ da página, inserida no _body_ do mesmo, é composta por:
 **Nota:** As secções impares apresentam uma diferença clara das restantes, um **gradiente** progredindo de transparente 
 para cinza e de novo para transparente como fundo.
 
+#### Resultado Final
+
+<figure style="text-align: center;">
+  <img src="pagina_html\pagina_final.png" alt="Secções">
+  <figcaption style="font-size: smaller; color: darkgray;">Figura 4. Resultado Final.</figcaption>
+</figure>
+
 ### Desafios
 - Tentativa de utilização de bibliotecas;
 - Exploração inicial das funcionalidades existentes em _html_.
