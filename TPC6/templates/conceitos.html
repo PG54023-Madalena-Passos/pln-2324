@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h3 style="text-align: center; margin-top: 20px; margin-bottom: 30px;"><b>Conceitos Médicos</b></h3>
+    <div class="list-group" style="margin-left: 10%; margin-right: 10%;">
+        {% for chave, valor in conceitos.items() %}
+            <a href="/conceitos/{{ chave }}" class="list-group-item list-group-item-action">{{ chave }}</a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

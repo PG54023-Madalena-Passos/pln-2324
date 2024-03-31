@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <style>
+        .btn-costume {
+            color: #80b0ff; /* Set default text color */
+            padding: 5px;
+            margin: 10px;
+        }
+        .btn-costume:hover {
+            background-color: #80b0ff; /* Change to your desired hover background color */
+            color: white; /* Change text color on hover */
+        }
+    </style>
+    <div>
+        <a href="{{ url_for('listar_conceitos') }}" class="btn btn-costume"> < Voltar</a>
+    </div>
+    <div style="text-align: center;">
+        <h1> {{c}} </h1>
+        <br><br>
+        <p><b>Descrição:</b> {{ conceito.desc|safe }}</p>
+        <p id="traducao" style="display: none;"><b>Tradução:</b> {{ conceito.en }}</p>
+        <button class="btn btn-costume" onclick="toggleTraducao(this)">Inglês</button>
+    </div>
+    <script>
+        function toggleTraducao(btn) {
+            const traducao = document.getElementById('traducao');
+
+            if (traducao.style.display === 'none') {
+                traducao.style.display = 'block';
+                btn.textContent = 'Ocultar Tradução';
+            } else {
+                traducao.style.display = 'none';
+                btn.textContent = 'Inglês';
+            }
+        }
+    </script>
+{% endblock %}
