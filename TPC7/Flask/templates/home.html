@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <style>
+        .centered-content {
+            text-align: center;
+        }
+        .centered-content img {
+            display: block;
+            margin: 20px auto;
+            width: 500px; /* Defina a largura desejada */
+            height: auto; /* Mantém a proporção da imagem */
+        }
+    </style>
+    <div class="centered-content">
+        <img src="static\imagem-dicionario-home.jpg">
+        <p style="font-size: 25px;"><b>Bem-vindo ao dicionário de conceitos médicos.</b></p>
+    
+    </div>
+
+{% endblock %}

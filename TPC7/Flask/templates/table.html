@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div>
+    <h2 style="margin-top: 40px; text-align: center;"><b>Tabela de Conceitos</b></h2>
+</div>
+
+<div style="margin-top: 20px; margin-left: 60px; margin-right: 60px;margin-bottom: 60px;">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th style="color: rgb(77, 169, 245); font-size: 18px;">Conceito</th>
+                <th style="color: rgb(77, 169, 245); font-size: 18px;">Definição</th>
+                <th style="color: rgb(77, 169, 245); font-size: 18px;">Tradução</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chave, valor in conceitos.items() %}
+            <tr>
+                <td style="font-size: 15px;"><b>{{ chave }}</b></td>
+                <td style="font-size: 15px;">{{ valor.desc|safe }}</td>
+                <td style="font-size: 15px;">{{ valor.en|safe }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

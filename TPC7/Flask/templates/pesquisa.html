@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <style>
+        .btn-costume:hover  {
+            color: #80b0ff; /* Set default text color */
+            padding: 5px;
+            margin: 10px;
+        }
+        .btn-costume {
+            background-color: #80b0ff; /* Change to your desired hover background color */
+            color: white; /* Change text color on hover */
+        }
+    </style>
+
+    <form id="formulario" style="margin: 40px 160px 20px 160px;" action="/pesquisa" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" id="InputPesq" name="termo" placeholder="Termo a procurar...">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-costume btn-block" style="margin-top: 10px;">Pesquisar</button>
+        </div>
+    </form>
+
+    <div class="list-group" style="margin-left: 10%; margin-right: 10%;">
+        {% if resultados_pesq %}
+            <h3 style="margin-bottom: 10px;">Resultados da Pesquisa: "{{termo}}"</h3>
+            {% for chave, valor in resultados_pesq.items() %}
+                {% set chave_destacada = chave.replace(termo, '<span style="background-color: yellow;">' + termo + '</span>') %}
+                {% set valor_desc_destacado = valor.desc.replace(termo, '<span style="background-color: yellow;">' + termo + '</span>') %}
+                {% set valor_en_destacado = valor.en.replace(termo, '<span style="background-color: yellow;">' + termo + '</span>') %}
+                <a href="/conceitos/{{ chave }}" class="list-group-item list-group-item-action">
+                    <strong>{{ chave_destacada | safe }}</strong>: 
+                    {{ valor_desc_destacado | safe }}<br>
+                    English: {{ valor_en_destacado | safe }}
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum resultado encontrado para '{{ termo if termo else "" }}'.</p>
+        {% endif %}
+    </div>
+
+    <h1 style="margin-bottom: 100px;"></h1>
+
+{% endblock %}

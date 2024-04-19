@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <style>
+    .btn-costume:hover  {
+        color: #80b0ff; /* Set default text color */
+        padding: 5px;
+        margin: 10px;
+    }
+    .btn-costume {
+        background-color: #80b0ff; /* Change to your desired hover background color */
+        color: white; /* Change text color on hover */
+    }
+  </style>
+
+    <h2 style="text-align: center; margin-top: 40px; margin-bottom: 30px;"><b>Conceitos Médicos</b></h2>
+
+    <button onclick="alternarFormulario()" class="btn btn-costume" style="margin-left: 150px; margin-bottom: 20px;">Inserir Conceito</button>
+
+    <form id="formulario" style="margin:40px 160px 40px 160px; display: none;" action="/conceitos" method="post">
+        <div class="form-group">
+          <label for="InputConceito">Conceito</label>
+          <input type="text" class="form-control" id="InputConceito" name="designacao">
+        </div>
+        <div class="form-group">
+          <label for="InputDescricao">Descrição</label>
+          <input type="text" class="form-control" id="InputDescricao" name="descricao">
+        </div>
+        <div class="form-group">
+            <label for="InputTraducao">Tradução</label>
+            <input type="text" class="form-control" id="InputTraducao" name="en">
+        </div>
+        <button type="submit" class="btn btn-costume" style="margin-top: 10px;">Inserir</button>
+      </form>
+
+    <!-- Barra de Pesquisa -->
+    <input type="text" id="searchInput" onkeyup="search()" placeholder="Pesquisar conceitos..." style="margin-left: 10%; margin-right: 10%; width: 80%; margin-bottom: 20px;">
+
+    <div class="list-group" id="conceitosList" style="margin-left: 10%; margin-right: 10%;">
+        {% for chave, valor in conceitos.items() %}
+            <a href="/conceitos/{{ chave }}" class="list-group-item list-group-item-action">{{ chave }}</a>
+        {% endfor %}
+    </div>
+
+    <h1 style="margin-bottom: 100px;"></h1>
+
+    <script>
+        function alternarFormulario() {
+        var formulario = document.getElementById("formulario");
+        var btn = document.querySelector(".btn.btn-costume");
+        if (formulario.style.display === "none") {
+            formulario.style.display = "block";
+            btn.textContent = 'Fechar';
+        } else {
+            formulario.style.display = "none";
+            btn.textContent = 'Inserir Conceito';
+        }
+    }
+
+        function search() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("conceitosList");
+            li = ul.getElementsByTagName('a');
+            for (i = 0; i < li.length; i++) {
+                a = li[i];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+{% endblock %}
